@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Viewport mobile-first : width=device-width garantit un rendu correct sur mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de [Ton Prénom] — Étudiante BTS SIO SISR en alternance" />
+  <title>Portfolio · BTS SIO SISR</title>
+
+  <!-- Google Fonts : Playfair Display (titres) + DM Sans (corps de texte) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Icônes Remix Icons (CDN open-source, léger) -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       EN-TÊTE / NAVIGATION
+       Position fixe pour rester visible lors du défilement.
+       Le menu est centré, le bouton contact est placé à droite
+       grâce à un layout CSS Grid à trois colonnes.
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Logo / Nom (colonne gauche) -->
+      <a href="#accueil" class="header-logo" aria-label="Retour à l'accueil">
+        <span class="logo-initials">AT</span><!-- Remplace par tes initiales -->
+      </a>
+
+      <!-- Navigation principale (colonne centrale) -->
+      <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+        <!-- Le bouton hamburger n'est visible que sur mobile (géré en CSS) -->
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+
+        <!-- Liste de liens : role="list" explicite pour les lecteurs d'écran -->
+        <ul class="nav-list" id="nav-menu" role="list">
+          <li class="nav-item"><a href="#accueil"      class="nav-link">Accueil</a></li>
+          <li class="nav-item"><a href="#a-propos"     class="nav-link">À Propos</a></li>
+          <li class="nav-item"><a href="#competences"  class="nav-link">Compétences</a></li>
+          <li class="nav-item"><a href="#projets"      class="nav-link">Mes Projets</a></li>
+          <li class="nav-item"><a href="#veille"       class="nav-link">Veille Techno</a></li>
+        </ul>
+      </nav>
+
+      <!-- Bouton contact (colonne droite) -->
+      <a href="#contact" class="btn btn--contact">
+        <i class="ri-mail-send-line" aria-hidden="true"></i>
+        <span>Me contacter</span>
+      </a>
+
+    </div><!-- /.header-inner -->
+  </header>
+
+
+  <!-- ============================================================
+       SECTION HERO — ACCUEIL
+       Point d'entrée visuel : présentation rapide + call-to-action.
+  ============================================================ -->
+  <main id="main-content">
+
+    <section class="section section--hero" id="accueil" aria-labelledby="hero-heading">
+
+      <!-- Formes décoratives en arrière-plan (pures CSS, voir style.css) -->
+      <div class="hero-deco hero-deco--1" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--2" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--3" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <!-- Badge de statut -->
+        <span class="badge badge--status">
+          <i class="ri-circle-fill" aria-hidden="true"></i>
+          Disponible en alternance
+        </span>
+
+        <h1 class="hero-heading" id="hero-heading">
+          Bienvenue, je suis<br />
+          <em class="hero-name">Aki TANAKA</em>
+        </h1>
+
+        <p class="hero-tagline">
+          Étudiante en <strong>BTS SIO – Option SISR</strong> · Réseaux &amp; Systèmes<br />
+          Passionnée par l'infrastructure, la cybersécurité et l'administration système.
+        </p>
+
+        <!-- Appels à l'action -->
+        <div class="hero-actions">
+          <a href="#projets" class="btn btn--primary">
+            Voir mes projets
+            <i class="ri-arrow-right-line" aria-hidden="true"></i>
+          </a>
+          <a href="#a-propos" class="btn btn--ghost">En savoir plus</a>
+        </div>
+
+        <!-- Indicateurs rapides -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">1<sup>ère</sup></span>
+            <span class="stat-label">Année BTS SIO</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">SISR</span>
+            <span class="stat-label">Option réseau</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">En alternance</span>
+            <span class="stat-label">Formation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo de profil -->
+      <figure class="hero-avatar" aria-label="Photo de profil">
+        <!-- Remplace l'URL par ta photo, ou supprime l'élément <img> pour garder le placeholder -->
+        <!-- <div class="avatar-placeholder" aria-hidden="true"> -->
+         <!-- <i class="ri-user-3-line"></i> -->
+       <!-- </div> -->
+        <img src="photo.jpg" alt="Portrait de Aki" class="avatar-img" />
+      </figure>
+
+    </section><!-- /#accueil -->
+
+
+    <!-- ============================================================
+         SECTION À PROPOS
+    ============================================================ -->
+    <section class="section section--about" id="a-propos" aria-labelledby="about-heading">
+      <div class="section-inner">
+
+        <header class="section-header">
+          <span class="section-label">À Propos</span>
+          <h2 class="section-title" id="about-heading">Qui suis-je ?</h2>
+        </header>
+
+        <div class="about-grid">
+
+          <!-- Texte de présentation -->
+          <div class="about-text">
+            <p>
+              Je m'appelle <strong>Aki TANAKA</strong>, étudiante en première année de
+              <strong>BTS SIO option SISR</strong> à l'école NEXA - Digital School.
+              Passionnée par les réseaux informatiques et la cybersécurité, j'ai choisi
+              l'alternance pour acquérir une expérience professionnelle concrète dès le début
+              de ma formation.
+            </p>
+            <p>
+              Au sein de mon entreprise <strong>"RTE - Réseau de Transport d'Électricité"</strong>, j'interviens sur
+              l'administration des serveurs, la gestion du parc informatique et la configuration
+              d'équipements réseau. Cette double formation me permet d'allier théorie et pratique.
+            </p>
+            <p>
+              Curieuse et rigoureuse, j'assure également une veille technologique régulière sur
+              les évolutions en matière de sécurité et d'infrastructures IT.
+            </p>
+
+            <!-- Liens sociaux / CV -->
+            <div class="about-links">
+              <a href="https://www.linkedin.com/in/aki-tanaka-a764a7242/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="ri-linkedin-box-fill" aria-hidden="true"></i> LinkedIn
+              </a>
+              <a href="https://github.com/Akita-9" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <i class="ri-github-fill" aria-hidden="true"></i> GitHub
+              </a>
+              <a href="cv.pdf" class="btn btn--outline" target="_blank">
+                <i class="ri-download-2-line" aria-hidden="true"></i> Voir mon CV
+              </a>
+            </div>
+          </div><!-- /.about-text -->
+
+          <!-- Informations clés en cartes -->
+          <aside class="about-cards" aria-label="Informations clés">
+            <div class="info-card">
+              <i class="ri-graduation-cap-line info-card__icon" aria-hidden="true"></i>
+              <h3 class="info-card__title">Formation</h3>
+              <p class="info-card__text">BTS SIO SISR — 1ère année<br />NEXA - DIgital School, Paris</p>
+            </div>
+            <div class="info-card">
+              <i class="ri-building-2-line info-card__icon" aria-hidden="true"></i>
+              <h3 class="info-card__title">Entreprise</h3>
+              <p class="info-card__text">RTE - Réseau de Transport d'Électricité<br />Puteaux</p>
+            </div>
+            <div class="info-card">
+              <i class="ri-map-pin-2-line info-card__icon" aria-hidden="true"></i>
+              <h3 class="info-card__title">Localisation</h3>
+              <p class="info-card__text">Ermont, France</p>
+            </div>
+            <div class="info-card">
+              <i class="ri-heart-line info-card__icon" aria-hidden="true"></i>
+              <h3 class="info-card__title">Centres d'intérêt</h3>
+              <p class="info-card__text">Cybersécurité, Linux, Virtualisation, CTF</p>
+            </div>
+          </aside>
+
+        </div><!-- /.about-grid -->
+      </div><!-- /.section-inner -->
+    </section><!-- /#a-propos -->
+
+
+    <!-- ============================================================
+         SECTION COMPÉTENCES TECHNIQUES — affichée sous forme de tableau
+         Le tableau est rendu accessible avec des en-têtes <th scope="col">
+         et un caption visible uniquement pour les lecteurs d'écran.
+    ============================================================ -->
+    <section class="section section--skills" id="competences" aria-labelledby="skills-heading">
+      <div class="section-inner">
+
+        <header class="section-header">
+          <span class="section-label">Compétences</span>
+          <h2 class="section-title" id="skills-heading">Compétences Techniques</h2>
+        </header>
+
+        <!-- Wrapper scroll horizontal pour les petits écrans -->
+        <div class="table-scroll" role="region" aria-label="Tableau des compétences techniques" tabindex="0">
+          <table class="skills-table">
+            <!-- Caption accessible : masqué visuellement mais lu par les lecteurs d'écran -->
+            <caption class="visually-hidden">
+              Tableau listant les compétences techniques classées par catégorie,
+              avec le niveau de maîtrise et les outils utilisés.
+            </caption>
+
+            <thead class="skills-table__head">
+              <tr>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Compétence / Technologie</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Outils / Détails</th>
+              </tr>
+            </thead>
+
+            <tbody class="skills-table__body">
+              <!-- ——— Réseaux ——— -->
+              <tr>
+                <td class="skills-table__category" rowspan="4">
+                  <span class="category-tag category-tag--network">
+                    <i class="ri-router-line" aria-hidden="true"></i> Réseaux
+                  </span>
+                </td>
+                <td>Protocoles TCP/IP</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : En cours d'apprentissage">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>OSI, IPv4/IPv6, DHCP, DNS</td>
+              </tr>
+              <tr>
+                <td>Administration réseau</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Intermédiaire">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>Cisco Packet Tracer, VLAN, routage statique</td>
+              </tr>
+              <tr>
+                <td>Pare-feu &amp; sécurité réseau</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Débutant">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>pfSense, ACL, iptables</td>
+              </tr>
+              <tr>
+                <td>Supervision</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Débutant">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>Zabbix, Nagios</td>
+              </tr>
+
+              <!-- ——— Systèmes ——— -->
+              <tr>
+                <td class="skills-table__category" rowspan="3">
+                  <span class="category-tag category-tag--system">
+                    <i class="ri-server-line" aria-hidden="true"></i> Systèmes
+                  </span>
+                </td>
+                <td>GNU/Linux</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Intermédiaire">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>Debian, Ubuntu Server, Bash</td>
+              </tr>
+              <tr>
+                <td>Windows Server</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : En cours d'apprentissage">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>AD, GPO, Windows Server 2022</td>
+              </tr>
+              <tr>
+                <td>Virtualisation</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Intermédiaire">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>VirtualBox, VMware, Proxmox</td>
+              </tr>
+
+              <!-- ——— Sécurité ——— -->
+              <tr>
+                <td class="skills-table__category" rowspan="2">
+                  <span class="category-tag category-tag--security">
+                    <i class="ri-shield-keyhole-line" aria-hidden="true"></i> Sécurité
+                  </span>
+                </td>
+                <td>Cybersécurité défensive</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Débutant">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>Wireshark, SIEM, antivirus</td>
+              </tr>
+              <tr>
+                <td>Gestion des accès</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : En cours d'apprentissage">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>LDAP, SSO, MFA</td>
+              </tr>
+
+              <!-- ——— Programmation ——— -->
+              <tr>
+                <td class="skills-table__category" rowspan="2">
+                  <span class="category-tag category-tag--code">
+                    <i class="ri-code-s-slash-line" aria-hidden="true"></i> Développement
+                  </span>
+                </td>
+                <td>Scripting</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : En cours d'apprentissage">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>Bash, PowerShell, Python (bases)</td>
+              </tr>
+              <tr>
+                <td>Web</td>
+                <td>
+                  <div class="skill-level" aria-label="Niveau : Débutant">
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot skill-dot--filled"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                    <span class="skill-dot"></span>
+                  </div>
+                </td>
+                <td>HTML, CSS, bases PHP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /.table-scroll -->
+
+        <!-- Légende des niveaux -->
+        <footer class="skills-legend" aria-label="Légende des niveaux">
+          <span class="legend-item">
+            <span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span>
+            Débutant
+          </span>
+          <span class="legend-item">
+            <span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span>
+            En apprentissage
+          </span>
+          <span class="legend-item">
+            <span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot" aria-hidden="true"></span>
+            Intermédiaire
+          </span>
+          <span class="legend-item">
+            <span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span><span class="skill-dot skill-dot--filled" aria-hidden="true"></span>
+            Maîtrisé
+          </span>
+        </footer>
+
+      </div><!-- /.section-inner -->
+    </section><!-- /#competences -->
+
+
+    <!-- ============================================================
+         SECTION PROJETS — affichée en grille CSS responsive
+         Chaque carte de projet utilise <article> (élément sémantique
+         pour un contenu indépendant).
+    ============================================================ -->
+    <section class="section section--projects" id="projets" aria-labelledby="projects-heading">
+      <div class="section-inner">
+
+        <header class="section-header">
+          <span class="section-label">Projets</span>
+          <h2 class="section-title" id="projects-heading">Mes Projets</h2>
+          <p class="section-subtitle">Travaux réalisés en cours et en entreprise</p>
+        </header>
+
+        <!-- Grille de projets : layout CSS Grid défini dans style.css -->
+        <div class="projects-grid" role="list">
+
+          <!-- Projet 1 -->
+          <article class="project-card" role="listitem">
+            <div class="project-card__header">
+              <div class="project-card__icon project-card__icon--network">
+                <i class="ri-router-2-line" aria-hidden="true"></i>
+              </div>
+              <span class="project-card__tag">Réseau</span>
+            </div>
+            <h3 class="project-card__title">Maquette réseau VLAN</h3>
+            <p class="project-card__desc">
+              Conception et configuration d'une maquette réseau segmentée
+              en VLANs sur Cisco Packet Tracer. Mise en place du routage
+              inter-VLAN et des règles de sécurité.
+            </p>
+            <footer class="project-card__footer">
+              <ul class="project-card__techs" aria-label="Technologies utilisées">
+                <li class="tech-tag">Packet Tracer</li>
+                <li class="tech-tag">VLAN</li>
+                <li class="tech-tag">Cisco IOS</li>
+              </ul>
+            </footer>
+          </article>
+
+          <!-- Projet 2 -->
+          <article class="project-card" role="listitem">
+            <div class="project-card__header">
+              <div class="project-card__icon project-card__icon--system">
+                <i class="ri-server-2-line" aria-hidden="true"></i>
+              </div>
+              <span class="project-card__tag">Système</span>
+            </div>
+            <h3 class="project-card__title">Déploiement serveur Linux</h3>
+            <p class="project-card__desc">
+              Installation et configuration d'un serveur Debian en machine
+              virtuelle : serveur SSH, partage NFS, gestion des utilisateurs
+              et droits avec sudo.
+            </p>
+            <footer class="project-card__footer">
+              <ul class="project-card__techs" aria-label="Technologies utilisées">
+                <li class="tech-tag">Debian</li>
+                <li class="tech-tag">SSH</li>
+                <li class="tech-tag">VirtualBox</li>
+              </ul>
+            </footer>
+          </article>
+
+          <!-- Projet 3 -->
+          <article class="project-card" role="listitem">
+            <div class="project-card__header">
+              <div class="project-card__icon project-card__icon--security">
+                <i class="ri-shield-check-line" aria-hidden="true"></i>
+              </div>
+              <span class="project-card__tag">Sécurité</span>
+            </div>
+            <h3 class="project-card__title">Analyse de trafic réseau</h3>
+            <p class="project-card__desc">
+              Capture et analyse de trames réseau avec Wireshark.
+              Identification de protocoles, détection d'anomalies et
+              rédaction d'un rapport d'analyse.
+            </p>
+            <footer class="project-card__footer">
+              <ul class="project-card__techs" aria-label="Technologies utilisées">
+                <li class="tech-tag">Wireshark</li>
+                <li class="tech-tag">TCP/IP</li>
+                <li class="tech-tag">Analyse</li>
+              </ul>
+            </footer>
+          </article>
+
+          <!-- Projet 4 -->
+          <article class="project-card" role="listitem">
+            <div class="project-card__header">
+              <div class="project-card__icon project-card__icon--windows">
+                <i class="ri-windows-line" aria-hidden="true"></i>
+              </div>
+              <span class="project-card__tag">Windows</span>
+            </div>
+            <h3 class="project-card__title">Active Directory &amp; GPO</h3>
+            <p class="project-card__desc">
+              Mise en place d'un domaine Active Directory sous Windows
+              Server 2022. Création d'UO, de comptes utilisateurs
+              et de stratégies de groupe (GPO).
+            </p>
+            <footer class="project-card__footer">
+              <ul class="project-card__techs" aria-label="Technologies utilisées">
+                <li class="tech-tag">Windows Server</li>
+                <li class="tech-tag">Active Directory</li>
+                <li class="tech-tag">GPO</li>
+              </ul>
+            </footer>
+          </article>
+
+          <!-- Projet 5 -->
+          <article class="project-card" role="listitem">
+            <div class="project-card__header">
+              <div class="project-card__icon project-card__icon--script">
+                <i class="ri-terminal-box-line" aria-hidden="true"></i>
+              </div>
+              <span class="project-card__tag">Script</span>
+            </div>
+            <h3 class="project-card__title">Script de sauvegarde Bash</h3>
+            <p class="project-card__desc">
+              Développement d'un script Bash automatisant la sauvegarde
+              incrémentielle de répertoires avec horodatage, rotation
+              des archives et envoi d'un rapport par mail.
+            </p>
+            <footer class="project-card__footer">
+              <ul class="project-card__techs" aria-label="Technologies utilisées">
+                <li class="tech-tag">Bash</li>
+                <li class="tech-tag">Cron</li>
+                <li class="tech-tag">Linux</li>
+              </ul>
+            </footer>
+          </article>
+
+          <!-- Projet 6 -->
+          <article class="project-card project-card--add" role="listitem" aria-label="Projet à venir">
+            <div class="project-card__add-icon">
+              <i class="ri-add-circle-line" aria-hidden="true"></i>
+            </div>
+            <p class="project-card__add-text">Prochain projet bientôt disponible…</p>
+          </article>
+
+        </div><!-- /.projects-grid -->
+      </div><!-- /.section-inner -->
+    </section><!-- /#projets -->
+
+
+    <!-- ============================================================
+         SECTION VEILLE TECHNOLOGIQUE
+    ============================================================ -->
+    <section class="section section--watch" id="veille" aria-labelledby="watch-heading">
+      <div class="section-inner">
+
+        <header class="section-header">
+          <span class="section-label">Veille</span>
+          <h2 class="section-title" id="watch-heading">Veille Technologique</h2>
+          <p class="section-subtitle">Je me tiens informée des évolutions du secteur IT</p>
+        </header>
+
+        <!-- Thèmes de veille -->
+        <div class="watch-topics">
+
+          <div class="watch-topic-card">
+            <i class="ri-shield-flash-line watch-topic-card__icon" aria-hidden="true"></i>
+            <h3 class="watch-topic-card__title">Cybersécurité</h3>
+            <p class="watch-topic-card__desc">
+              Suivi des vulnérabilités (CVE), des ransomwares et des bonnes
+              pratiques de sécurisation des infrastructures.
+            </p>
+            <ul class="watch-topic-card__sources" aria-label="Sources consultées">
+              <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener noreferrer">ANSSI / CERT-FR</a></li>
+              <li><a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener noreferrer">Le Monde Informatique</a></li>
+            </ul>
+          </div>
+
+          <div class="watch-topic-card">
+            <i class="ri-cloud-line watch-topic-card__icon" aria-hidden="true"></i>
+            <h3 class="watch-topic-card__title">Cloud &amp; Virtualisation</h3>
+            <p class="watch-topic-card__desc">
+              Évolutions des plateformes cloud (AWS, Azure), des conteneurs
+              Docker et des hyperviseurs (Proxmox, VMware).
+            </p>
+            <ul class="watch-topic-card__sources" aria-label="Sources consultées">
+              <li><a href="https://www.zdnet.fr/" target="_blank" rel="noopener noreferrer">ZDNet France</a></li>
+              <li><a href="https://docs.microsoft.com/azure" target="_blank" rel="noopener noreferrer">Microsoft Learn</a></li>
+            </ul>
+          </div>
+
+          <div class="watch-topic-card">
+            <i class="ri-terminal-line watch-topic-card__icon" aria-hidden="true"></i>
+            <h3 class="watch-topic-card__title">Linux &amp; Open Source</h3>
+            <p class="watch-topic-card__desc">
+              Nouvelles distributions, mises à jour du noyau, outils
+              d'administration et scripts d'automatisation.
+            </p>
+            <ul class="watch-topic-card__sources" aria-label="Sources consultées">
+              <li><a href="https://linuxfr.org/" target="_blank" rel="noopener noreferrer">LinuxFR</a></li>
+              <li><a href="https://www.reddit.com/r/linux/" target="_blank" rel="noopener noreferrer">Reddit r/linux</a></li>
+            </ul>
+          </div>
+
+          <div class="watch-topic-card">
+            <i class="ri-rss-line watch-topic-card__icon" aria-hidden="true"></i>
+            <h3 class="watch-topic-card__title">Mes outils de veille</h3>
+            <p class="watch-topic-card__desc">
+              Agrégateurs et méthodes utilisées pour rester à jour sur
+              les tendances technologiques du secteur.
+            </p>
+            <ul class="watch-topic-card__sources" aria-label="Outils de veille">
+              <li>Feedly (agrégateur RSS)</li>
+              <li>Newsletters IT · Twitter/X techno</li>
+              <li>Podcasts : NoLimitSecu</li>
+            </ul>
+          </div>
+
+        </div><!-- /.watch-topics -->
+      </div><!-- /.section-inner -->
+    </section><!-- /#veille -->
+
+
+    <!-- ============================================================
+         SECTION CONTACT
+    ============================================================ -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-heading">
+      <div class="section-inner section-inner--narrow">
+
+        <header class="section-header">
+          <span class="section-label">Contact</span>
+          <h2 class="section-title" id="contact-heading">Me Contacter</h2>
+          <p class="section-subtitle">
+            Une question, une opportunité ? N'hésitez pas à m'écrire !
+          </p>
+        </header>
+
+        <!-- Formulaire de contact accessible -->
+        <!-- Note : pour un vrai envoi, brancher un service backend (ex: Formspree, EmailJS) -->
+        <form class="contact-form" action="#" method="post" novalidate aria-label="Formulaire de contact">
+
+          <div class="form-row">
+            <!-- Chaque champ associé à son <label> via l'attribut "for" / "id" -->
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Nom complet <span aria-hidden="true">*</span></label>
+              <input
+                class="form-input"
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder="Jean Dupont"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Adresse e-mail <span aria-hidden="true">*</span></label>
+              <input
+                class="form-input"
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder="jean@exemple.fr"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </div><!-- /.form-row -->
+
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">Sujet</label>
+            <input
+              class="form-input"
+              type="text"
+              id="contact-subject"
+              name="subject"
+              placeholder="Opportunité d'alternance / Question…"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message <span aria-hidden="true">*</span></label>
+            <textarea
+              class="form-textarea"
+              id="contact-message"
+              name="message"
+              rows="5"
+              placeholder="Votre message…"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn--primary btn--submit" type="submit">
+              <i class="ri-send-plane-fill" aria-hidden="true"></i>
+              Envoyer le message
+            </button>
+          </div>
+
+        </form><!-- /.contact-form -->
+
+        <!-- Liens de contact directs -->
+        <div class="contact-direct" aria-label="Coordonnées directes">
+          <a href="mailto:akitana.2010@gmail.com" class="direct-link">
+            <i class="ri-mail-line" aria-hidden="true"></i>
+            akitana.2010@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/aki-tanaka-a764a7242/" target="_blank" rel="noopener noreferrer" class="direct-link">
+            <i class="ri-linkedin-box-line" aria-hidden="true"></i>
+            linkedin.com/in/aki-tanaka
+          </a>
+        </div>
+
+      </div><!-- /.section-inner -->
+    </section><!-- /#contact -->
+
+  </main><!-- /#main-content -->
+
+
+  <!-- ============================================================
+       PIED DE PAGE
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-copy">
+        © <time datetime="2024">2026</time> · Aki TANAKA · BTS SIO - SISR
+      </p>
+      <p class="footer-credit">
+        Fait avec <i class="ri-heart-fill" aria-hidden="true"></i> et beaucoup de café
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       BOUTON "RETOUR EN HAUT" (scroll-to-top)
+  ============================================================ -->
+  <a href="#accueil" class="scroll-top" aria-label="Retour en haut de la page">
+    <i class="ri-arrow-up-line" aria-hidden="true"></i>
+  </a>
+
+
+  <!-- ============================================================
+       SCRIPT : menu hamburger (mobile) + scroll-top visibility
+       Peu de JS, uniquement pour la logique d'état du menu mobile
+       et la visibilité du bouton scroll-top.
+  ============================================================ -->
+  <script>
+    // ——— Menu hamburger ———
+    // On cible le bouton toggle et la liste de navigation
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList   = document.querySelector('.nav-list');
+
+    navToggle.addEventListener('click', () => {
+      // On bascule la classe "is-open" sur le menu
+      const isOpen = navList.classList.toggle('is-open');
+      // On met à jour l'attribut ARIA pour l'accessibilité
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Fermer le menu quand on clique sur un lien (UX mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ——— Bouton scroll-to-top ———
+    // Le bouton n'apparaît qu'après 300px de défilement
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('is-visible', window.scrollY > 300);
+    });
+
+    // ——— Lien actif dans la nav selon la section visible ———
+    // IntersectionObserver : performance > eventListener scroll classique
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle(
+              'is-active',
+              link.getAttribute('href') === '#' + entry.target.id
+            );
+          });
+        }
+      });
+    }, { threshold: 0.4 }); // 40 % de la section doit être visible
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
