@@ -1,0 +1,1416 @@
+/* ================================================================
+   PORTFOLIO BTS SIO SISR — Feuille de style principale
+   Thème : "Douceur Numérique" — pastel doux, typographie soignée
+   Architecture : Mobile-First → breakpoints vers le haut
+   ================================================================ */
+
+
+/* ================================================================
+   1. VARIABLES CSS & DESIGN TOKENS
+   Toutes les valeurs de couleur, espacement et typographie sont
+   centralisées ici pour faciliter la maintenance.
+   ================================================================ */
+:root {
+  /* ——— Palette pastel principale ——— */
+  --clr-blush:       #f5d6e0;   /* rose poudré */
+  --clr-lavender:    #dfd6f5;   /* lavande douce */
+  --clr-mint:        #d6f0e8;   /* menthe fraîche */
+  --clr-sky:         #d6eaf5;   /* bleu ciel */
+  --clr-peach:       #f5e6d6;   /* pêche */
+
+  /* ——— Couleurs sémantiques ——— */
+  --clr-bg:          #fdfaf7;   /* fond global (blanc crème) */
+  --clr-surface:     #ffffff;   /* cartes, formulaires */
+  --clr-border:      #ede8e3;   /* bordures légères */
+
+  /* ——— Accent principal (lavande profonde) ——— */
+  --clr-accent:      #8b6fc7;   /* couleur CTA / liens actifs */
+  --clr-accent-dark: #6b4fa7;   /* hover de l'accent */
+  --clr-accent-soft: #ede8f9;   /* fond léger accent */
+
+  /* ——— Texte ——— */
+  --clr-text:        #2d2535;   /* texte principal */
+  --clr-text-muted:  #8a7f9a;   /* texte secondaire */
+  --clr-text-light:  #b4adc2;   /* texte très discret */
+
+  /* ——— Typographie ——— */
+  --font-display: 'Playfair Display', Georgia, serif;   /* titres élégants */
+  --font-body:    'DM Sans', 'Segoe UI', sans-serif;    /* corps lisible */
+
+  --fz-xs:   0.75rem;   /*  12px */
+  --fz-sm:   0.875rem;  /*  14px */
+  --fz-base: 1rem;      /*  16px */
+  --fz-md:   1.125rem;  /*  18px */
+  --fz-lg:   1.25rem;   /*  20px */
+  --fz-xl:   1.5rem;    /*  24px */
+  --fz-2xl:  2rem;      /*  32px */
+  --fz-3xl:  2.5rem;    /*  40px */
+  --fz-4xl:  3.5rem;    /*  56px */
+
+  /* ——— Espacements ——— */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* ——— Mise en page ——— */
+  --max-width:     1100px;
+  --header-height: 72px;
+
+  /* ——— Rayons de bordure ——— */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ——— Ombres ——— */
+  --shadow-sm:  0 2px 8px rgba(45, 37, 53, 0.06);
+  --shadow-md:  0 4px 20px rgba(45, 37, 53, 0.10);
+  --shadow-lg:  0 8px 40px rgba(45, 37, 53, 0.14);
+  --shadow-accent: 0 4px 20px rgba(139, 111, 199, 0.25);
+
+  /* ——— Transitions ——— */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+}
+
+/* 1. La règle pour tout le site */
+html, body {
+    cursor: url('https://cur.cursors-4u.net/nature/nat-10/nat984.cur'), auto !important;
+}
+
+/* 2. La règle SPECIFIQUE pour les éléments cliquables */
+/* On liste toutes les balises qui transforment habituellement le curseur */
+a, 
+button, 
+.btn-contact, 
+.carte-projet,
+input[type="submit"],
+area {
+    cursor: url('https://cur.cursors-4u.net/nature/nat-10/nat984.cur'), auto !important;
+}
+
+/* ================================================================
+   2. RESET & BASE
+   Normalisation cross-browser minimaliste ; tout hérite de box-sizing.
+   ================================================================ */
+
+/* Toutes les boîtes incluent padding et bordure dans leur taille */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;           /* défilement doux pour les ancres */
+  font-size: 100%;                   /* base 16px selon les préférences utilisateur */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fz-base);
+  line-height: 1.7;
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+  /* Texture très subtile en grain — renforce le côté artisanal/doux */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  overflow-x: hidden;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Suppression du style natif des listes (dans les nav) */
+ul, ol {
+  list-style: none;
+}
+
+/* Liens héritent de la couleur du parent par défaut */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Champs de formulaire héritent de la police */
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+/* ——— Classe utilitaire d'accessibilité ———
+   Masque visuellement un élément mais le garde lisible par les screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible personnalisé pour l'accessibilité clavier */
+:focus-visible {
+  outline: 3px solid var(--clr-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ================================================================
+   3. EN-TÊTE & NAVIGATION
+   Layout en 3 colonnes CSS Grid :
+   [logo] [nav centrée] [bouton contact]
+   ================================================================ */
+.site-header {
+  position: fixed;           /* reste collé en haut lors du défilement */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  background: rgba(253, 250, 247, 0.88);  /* fond semi-transparent */
+  /* Flou d'arrière-plan (effet glassmorphism léger) */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--clr-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.header-inner {
+  /* Grid 3 colonnes : logo (auto) | nav (1fr) | contact (auto) */
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--sp-4);
+  max-width: var(--max-width);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* ——— Logo / Initiales ——— */
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--clr-lavender), var(--clr-blush));
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fz-sm);
+  color: var(--clr-accent);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.header-logo:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-accent);
+}
+
+/* ——— Navigation principale ——— */
+.main-nav {
+  /* Centre les liens horizontalement dans la colonne centrale */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bouton hamburger : visible uniquement sur mobile */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--sp-2);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background: var(--clr-accent-soft);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--clr-text);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* Liste des liens — cachée sur mobile, affichée en overlay */
+.nav-list {
+  /* Mobile : menu caché par défaut, positionné hors écran */
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  background: var(--clr-surface);
+  padding: var(--sp-8) var(--sp-6);
+  gap: var(--sp-2);
+  transform: translateX(-100%);
+  transition: transform var(--transition-slow);
+  overflow-y: auto;
+  z-index: 999;
+}
+
+/* Classe ajoutée par JS quand le menu hamburger est ouvert */
+.nav-list.is-open {
+  transform: translateX(0);
+}
+
+.nav-link {
+  display: block;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fz-md);
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--clr-accent);
+  background: var(--clr-accent-soft);
+}
+
+/* Trait de soulignement animé pour le lien actif (desktop) */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--clr-accent);
+  border-radius: var(--radius-full);
+  transform: translateX(-50%);
+  transition: width var(--transition-base);
+}
+
+/* ——— Bouton "Me contacter" ——— */
+.btn--contact {
+  /* Petite taille sur mobile pour ne pas déborder */
+  white-space: nowrap;
+}
+
+
+/* ================================================================
+   4. COMPOSANT BOUTON (btn)
+   Modificateurs BEM : --primary, --ghost, --outline, --contact
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius-full);
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Bouton principal : fond accent + texte blanc */
+.btn--primary {
+  background: var(--clr-accent);
+  color: #fff;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn--primary:hover {
+  background: var(--clr-accent-dark);
+  box-shadow: 0 6px 24px rgba(139, 111, 199, 0.4);
+}
+
+/* Bouton fantôme : transparent + bordure accent */
+.btn--ghost {
+  background: transparent;
+  color: var(--clr-accent);
+  border-color: var(--clr-lavender);
+}
+
+.btn--ghost:hover {
+  background: var(--clr-accent-soft);
+  border-color: var(--clr-accent);
+}
+
+/* Bouton outline (CV download) */
+.btn--outline {
+  background: transparent;
+  color: var(--clr-text-muted);
+  border-color: var(--clr-border);
+}
+
+.btn--outline:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+/* Bouton "Me contacter" dans le header */
+.btn--contact {
+  background: var(--clr-accent-soft);
+  color: var(--clr-accent);
+  border-color: var(--clr-lavender);
+  font-size: var(--fz-xs);
+  padding: var(--sp-2) var(--sp-4);
+}
+
+.btn--contact:hover {
+  background: var(--clr-accent);
+  color: #fff;
+}
+
+/* Bouton submit du formulaire : plus grand */
+.btn--submit {
+  width: 100%;
+  justify-content: center;
+  padding: var(--sp-4) var(--sp-8);
+  font-size: var(--fz-base);
+}
+
+
+/* ================================================================
+   5. STRUCTURE DE SECTION
+   Chaque section partage un espacement et un container cohérents.
+   ================================================================ */
+
+/* Décalage pour compenser le header fixe lors du scroll */
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + var(--sp-4));
+}
+
+/* Conteneur max-width centré */
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+/* Version étroite (formulaire contact) */
+.section-inner--narrow {
+  max-width: 680px;
+}
+
+/* Espacement vertical de chaque section */
+.section {
+  padding-top: var(--sp-20);
+  padding-bottom: var(--sp-20);
+}
+
+/* En-tête de section : label + titre + sous-titre */
+.section-header {
+  margin-bottom: var(--sp-12);
+  text-align: center;
+}
+
+/* Petite étiquette de catégorie au-dessus du titre */
+.section-label {
+  display: inline-block;
+  background: var(--clr-accent-soft);
+  color: var(--clr-accent);
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--sp-1) var(--sp-4);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--sp-3);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--fz-2xl);
+  font-weight: 700;
+  color: var(--clr-text);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  margin-top: var(--sp-3);
+  color: var(--clr-text-muted);
+  font-size: var(--fz-md);
+}
+
+
+/* ================================================================
+   6. SECTION HERO
+   ================================================================ */
+.section--hero {
+  /* Prend toute la hauteur de la fenêtre, moins le header */
+  min-height: 100svh;
+  padding-top: calc(var(--header-height) + var(--sp-10));
+  padding-bottom: var(--sp-16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ——— Formes décoratives en arrière-plan ———
+   Positionnées en absolute, cachées visuellement aux screen readers (aria-hidden) */
+.hero-deco {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);      /* flou doux pour un effet "blob" pastel */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-deco--1 {
+  width: 400px;
+  height: 400px;
+  background: var(--clr-lavender);
+  top: -80px;
+  right: -100px;
+  opacity: 0.6;
+}
+
+.hero-deco--2 {
+  width: 300px;
+  height: 300px;
+  background: var(--clr-blush);
+  bottom: 0;
+  left: -80px;
+  opacity: 0.5;
+}
+
+.hero-deco--3 {
+  width: 200px;
+  height: 200px;
+  background: var(--clr-mint);
+  top: 40%;
+  left: 30%;
+  opacity: 0.3;
+}
+
+/* Contenu du hero (texte + actions) */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 540px;
+  /* Animation d'apparition au chargement */
+  animation: fadeSlideUp 0.7s ease both;
+}
+
+/* Badge de statut (disponible en alternance) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-3) var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-full);
+  font-size: var(--fz-xs);
+  font-weight: 500;
+  margin-bottom: var(--sp-6);
+}
+
+.badge--status {
+  background: var(--clr-mint);
+  color: #2d6a4f;
+  border: 1px solid #95d5b2;
+}
+
+/* Le petit point vert clignote (animation pulse) */
+.badge--status .ri-circle-fill {
+  font-size: 8px;
+  color: #52b788;
+  animation: pulse 2s infinite;
+}
+
+/* Titre principal du hero */
+.hero-heading {
+  font-family: var(--font-display);
+  font-size: var(--fz-3xl);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--sp-6);
+  color: var(--clr-text);
+}
+
+/* Nom en italique accentué */
+.hero-name {
+  color: var(--clr-accent);
+  font-style: italic;
+  display: block;
+}
+
+.hero-tagline {
+  font-size: var(--fz-md);
+  color: var(--clr-text-muted);
+  margin-bottom: var(--sp-8);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-10);
+}
+
+/* Statistiques rapides en ligne de cartes */
+.hero-stats {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4) var(--sp-5);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  flex: 1;
+  min-width: 80px;
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fz-xl);
+  font-weight: 700;
+  color: var(--clr-accent);
+  line-height: 1;
+}
+
+.stat-number sup {
+  font-size: 0.6em;
+}
+
+.stat-label {
+  display: block;
+  font-size: var(--fz-xs);
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-1);
+}
+
+/* Avatar / photo de profil */
+.hero-avatar {
+  position: relative;
+  z-index: 1;
+  animation: fadeSlideUp 0.7s 0.2s ease both;
+  display: none; /* Caché sur mobile, affiché en desktop */
+}
+
+/* Placeholder si pas de photo */
+.avatar-placeholder {
+  width: 280px;
+  height: 280px;
+  border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%; /* forme organique */
+  background: linear-gradient(135deg, var(--clr-lavender), var(--clr-blush));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: var(--clr-accent);
+  box-shadow: var(--shadow-lg);
+  /* Légère animation de flottement */
+  animation: float 5s ease-in-out infinite;
+}
+
+.avatar-img {
+  width: 280px;
+  height: 280px;
+  border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+}
+
+
+/* ================================================================
+   7. SECTION À PROPOS
+   ================================================================ */
+.section--about {
+  background: var(--clr-surface);
+}
+
+/* Grille à deux colonnes sur desktop (texte | cartes) */
+.about-grid {
+  display: grid;
+  gap: var(--sp-10);
+}
+
+.about-text p {
+  color: var(--clr-text-muted);
+  margin-bottom: var(--sp-4);
+}
+
+.about-text p:last-of-type {
+  margin-bottom: var(--sp-6);
+}
+
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+/* Liens sociaux (LinkedIn, GitHub…) */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--clr-accent);
+  font-weight: 600;
+  font-size: var(--fz-sm);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.social-link:hover {
+  background: var(--clr-accent-soft);
+}
+
+/* Grille des cartes d'infos (2 colonnes sur mobile déjà) */
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+/* Carte d'info individuelle */
+.info-card {
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-5);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.info-card__icon {
+  font-size: 1.5rem;
+  color: var(--clr-accent);
+  margin-bottom: var(--sp-3);
+  display: block;
+}
+
+.info-card__title {
+  font-size: var(--fz-sm);
+  font-weight: 700;
+  color: var(--clr-text);
+  margin-bottom: var(--sp-1);
+}
+
+.info-card__text {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+}
+
+
+/* ================================================================
+   8. SECTION COMPÉTENCES — TABLEAU
+   ================================================================ */
+.section--skills {
+  background: var(--clr-bg);
+}
+
+/* Wrapper permettant le scroll horizontal sur mobile
+   sans casser le layout de la page */
+.table-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  /* Indication visuelle de scroll sur mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+.skills-table {
+  width: 100%;
+  min-width: 600px;     /* empêche l'écrasement sur mobile → scroll horizontal */
+  border-collapse: collapse;
+  background: var(--clr-surface);
+  font-size: var(--fz-sm);
+}
+
+/* En-tête du tableau */
+.skills-table__head tr {
+  background: linear-gradient(90deg, var(--clr-lavender), var(--clr-blush));
+}
+
+.skills-table__head th {
+  padding: var(--sp-4) var(--sp-5);
+  text-align: left;
+  font-size: var(--fz-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-text);
+  white-space: nowrap;
+}
+
+/* Lignes du corps du tableau */
+.skills-table__body tr {
+  border-bottom: 1px solid var(--clr-border);
+  transition: background var(--transition-fast);
+}
+
+.skills-table__body tr:hover {
+  background: var(--clr-accent-soft);
+}
+
+.skills-table__body td {
+  padding: var(--sp-4) var(--sp-5);
+  color: var(--clr-text-muted);
+  vertical-align: middle;
+}
+
+/* Cellule de catégorie avec rowspan : fond plus sombre */
+.skills-table__category {
+  background: var(--clr-bg) !important;
+  text-align: center;
+  border-right: 1px solid var(--clr-border);
+}
+
+/* Pastilles de catégorie colorées */
+.category-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fz-xs);
+  font-weight: 700;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+}
+
+.category-tag--network  { background: var(--clr-sky);     color: #1a5276; }
+.category-tag--system   { background: var(--clr-mint);    color: #1e5631; }
+.category-tag--security { background: var(--clr-blush);   color: #922b21; }
+.category-tag--code     { background: var(--clr-peach);   color: #784212; }
+
+/* ——— Indicateur de niveau (pastilles) ———
+   Chaque niveau est représenté par 5 points, remplis ou vides */
+.skill-level {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.skill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clr-border);  /* point vide */
+  display: inline-block;
+}
+
+.skill-dot--filled {
+  background: var(--clr-accent);  /* point plein */
+}
+
+/* Légende des niveaux sous le tableau */
+.skills-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-6);
+  justify-content: center;
+  margin-top: var(--sp-6);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fz-xs);
+  color: var(--clr-text-muted);
+}
+
+.legend-item .skill-dot {
+  width: 8px;
+  height: 8px;
+}
+
+
+/* ================================================================
+   9. SECTION PROJETS — GRILLE CSS
+   ================================================================ */
+.section--projects {
+  background: var(--clr-surface);
+}
+
+/* Grille CSS auto-fill : s'adapte au nombre de colonnes disponibles */
+.projects-grid {
+  display: grid;
+  /* auto-fill : remplit autant de colonnes que possible
+     minmax(280px, 1fr) : chaque colonne fait au minimum 280px */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-6);
+}
+
+/* Carte de projet */
+.project-card {
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--clr-lavender);
+}
+
+.project-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Icône de la carte (cercle coloré) */
+.project-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+/* Couleurs par type de projet */
+.project-card__icon--network  { background: var(--clr-sky);     color: #1a5276; }
+.project-card__icon--system   { background: var(--clr-mint);    color: #1e5631; }
+.project-card__icon--security { background: var(--clr-blush);   color: #922b21; }
+.project-card__icon--windows  { background: var(--clr-lavender);color: var(--clr-accent); }
+.project-card__icon--script   { background: var(--clr-peach);   color: #784212; }
+
+/* Tag de type (Réseau, Système…) */
+.project-card__tag {
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  background: var(--clr-border);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-full);
+}
+
+.project-card__title {
+  font-size: var(--fz-md);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.project-card__desc {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  flex: 1;                  /* pousse le footer vers le bas */
+}
+
+.project-card__footer {
+  margin-top: auto;
+}
+
+/* Liste de technologies (flex wrapping) */
+.project-card__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.tech-tag {
+  background: var(--clr-accent-soft);
+  color: var(--clr-accent);
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-full);
+}
+
+/* Carte "à venir" — style pointillé */
+.project-card--add {
+  border-style: dashed;
+  border-color: var(--clr-lavender);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--clr-text-light);
+  cursor: default;
+  min-height: 200px;
+}
+
+.project-card--add:hover {
+  transform: none;
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+.project-card__add-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-3);
+}
+
+.project-card__add-text {
+  font-size: var(--fz-sm);
+  font-style: italic;
+}
+
+
+/* ================================================================
+   10. SECTION VEILLE TECHNOLOGIQUE
+   ================================================================ */
+.section--watch {
+  background: var(--clr-bg);
+}
+
+.watch-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-6);
+}
+
+.watch-topic-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.watch-topic-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Icône de la carte veille */
+.watch-topic-card__icon {
+  font-size: 2rem;
+  color: var(--clr-accent);
+  margin-bottom: var(--sp-4);
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.watch-topic-card:hover .watch-topic-card__icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.watch-topic-card__title {
+  font-size: var(--fz-md);
+  font-weight: 700;
+  color: var(--clr-text);
+  margin-bottom: var(--sp-3);
+}
+
+.watch-topic-card__desc {
+  font-size: var(--fz-sm);
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--sp-4);
+}
+
+/* Liste de sources de veille */
+.watch-topic-card__sources {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.watch-topic-card__sources li {
+  font-size: var(--fz-xs);
+  color: var(--clr-text-light);
+}
+
+.watch-topic-card__sources a {
+  color: var(--clr-accent);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.watch-topic-card__sources a:hover {
+  color: var(--clr-accent-dark);
+  text-decoration: underline;
+}
+
+
+/* ================================================================
+   11. SECTION CONTACT
+   ================================================================ */
+.section--contact {
+  background: linear-gradient(135deg, var(--clr-lavender) 0%, var(--clr-blush) 100%);
+}
+
+/* Formulaire de contact */
+.contact-form {
+  background: var(--clr-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-8);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-8);
+}
+
+/* Deux champs côte à côte sur desktop (flex-row) */
+.form-row {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.form-label {
+  font-size: var(--fz-sm);
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+/* L'astérisque (champ obligatoire) hérite de la couleur accent */
+.form-label span {
+  color: var(--clr-accent);
+}
+
+/* Styles communs aux <input> et <textarea> */
+.form-input,
+.form-textarea {
+  background: var(--clr-bg);
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fz-sm);
+  color: var(--clr-text);
+  width: 100%;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Placeholders plus discrets */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--clr-text-light);
+}
+
+/* Focus state : bordure accent + légère lueur */
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 4px rgba(139, 111, 199, 0.12);
+}
+
+.form-textarea {
+  resize: vertical;   /* l'utilisateur peut agrandir verticalement uniquement */
+  min-height: 120px;
+}
+
+/* Liens de contact directs sous le formulaire */
+.contact-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  justify-content: center;
+}
+
+.direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--clr-accent-dark);
+  font-weight: 600;
+  font-size: var(--fz-sm);
+  background: rgba(255, 255, 255, 0.7);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base), transform var(--transition-fast);
+}
+
+.direct-link:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+
+/* ================================================================
+   12. PIED DE PAGE
+   ================================================================ */
+.site-footer {
+  background: var(--clr-text);
+  color: var(--clr-text-light);
+  padding: var(--sp-8) var(--sp-6);
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: var(--fz-sm);
+}
+
+.footer-credit {
+  font-size: var(--fz-xs);
+}
+
+.footer-credit .ri-heart-fill {
+  color: var(--clr-blush);
+}
+
+
+/* ================================================================
+   13. BOUTON SCROLL-TO-TOP
+   ================================================================ */
+.scroll-top {
+  position: fixed;
+  bottom: var(--sp-6);
+  right: var(--sp-6);
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  background: var(--clr-accent);
+  color: #fff;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-accent);
+  /* Caché par défaut : transform + opacity pour une animation fluide */
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+/* Classe ajoutée par JS quand on a défilé de 300px */
+.scroll-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  background: var(--clr-accent-dark);
+}
+
+
+/* ================================================================
+   14. ANIMATIONS KEYFRAMES
+   ================================================================ */
+
+/* Apparition en glissant du bas vers le haut */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flottement continu (avatar) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Pulsation (point de disponibilité) */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+
+/* ================================================================
+   15. RESPONSIVE — BREAKPOINTS (Mobile-First)
+   On part du mobile (déjà défini ci-dessus), puis on enrichit
+   l'affichage au fur et à mesure que l'écran s'agrandit.
+   ================================================================ */
+
+/* ——— Tablette : ≥ 640px ——— */
+@media (min-width: 640px) {
+
+  .section-title {
+    font-size: var(--fz-3xl);
+  }
+
+  /* Hero : titre plus grand */
+  .hero-heading {
+    font-size: calc(var(--fz-3xl) + 0.5rem);
+  }
+
+  /* Contact : deux champs côte à côte */
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ——— Desktop : ≥ 900px ——— */
+@media (min-width: 900px) {
+
+  /* ——— Navigation desktop ——— */
+
+  /* On cache le bouton hamburger */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* La liste de liens revient en mode flex horizontal normal */
+  .nav-list {
+    position: static;       /* plus de position fixed */
+    transform: none;        /* plus de translation */
+    flex-direction: row;
+    background: none;
+    padding: 0;
+    gap: 0;
+    overflow: visible;
+    inset: auto;
+    z-index: auto;
+  }
+
+  .nav-link {
+    font-size: var(--fz-sm);
+    padding: var(--sp-2) var(--sp-4);
+  }
+
+  /* Soulignement animé visible sur desktop seulement */
+  .nav-link.is-active::after,
+  .nav-link:hover::after {
+    width: 60%;
+  }
+
+  /* ——— Hero : layout côte à côte ——— */
+  .section--hero {
+    padding-left: var(--sp-6);
+    padding-right: var(--sp-6);
+  }
+
+  .section--hero > * {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .section--hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--sp-12);
+    padding-left: max(var(--sp-6), calc((100% - var(--max-width)) / 2));
+    padding-right: max(var(--sp-6), calc((100% - var(--max-width)) / 2));
+  }
+
+  /* Avatar visible sur desktop */
+  .hero-avatar {
+    display: block;
+  }
+
+  .hero-heading {
+    font-size: var(--fz-4xl);
+  }
+
+  /* ——— About : deux colonnes ——— */
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  /* ——— Tableau : taille de texte normale ——— */
+  .skills-table {
+    font-size: var(--fz-base);
+    min-width: unset;  /* plus besoin du scroll horizontal */
+  }
+}
+
+/* ——— Large desktop : ≥ 1200px ——— */
+@media (min-width: 1200px) {
+
+  .section-title {
+    font-size: var(--fz-3xl);
+  }
+
+  /* Grille de projets : 3 colonnes fixes */
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Grille veille : 4 colonnes */
+  .watch-topics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ——— Accessibilité : respect des préférences de mouvement réduit ——— */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
